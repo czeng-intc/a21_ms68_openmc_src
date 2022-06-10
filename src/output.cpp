@@ -315,6 +315,7 @@ void print_usage()
       "  -e, --event            Run using event-based parallelism\n"
       "  -m, --minimum          Minimum energy sorting threshold\n"
       "  -i, --inflight         Maximum number of in-flight particles\n"
+      "  -b, --bins             Number of logarithmic hash bins\n"
       "  -v, --version          Show version information\n"
       "  -h, --help             Show this message\n");
   }

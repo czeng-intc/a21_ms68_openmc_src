@@ -150,6 +150,10 @@ parse_command_line(int argc, char* argv[])
         i += 1;
         settings::minimum_sort_items = std::stoll(argv[i]);
       
+      } else if (arg == "-b" || arg == "--bins") {
+        i += 1;
+        settings::n_log_bins = std::stoll(argv[i]);
+      
       } else if (arg == "-i" || arg == "--inflight") {
         i += 1;
         settings::max_particles_in_flight = std::stoll(argv[i]);
