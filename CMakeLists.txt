@@ -21,6 +21,10 @@ if (NOT (CMAKE_VERSION VERSION_LESS 3.12))
   cmake_policy(SET CMP0074 NEW)
 endif()
 
+# Timing for compilation
+set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "time -v")
+set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK "time -v")
+
 #===============================================================================
 # Command line options
 #===============================================================================
