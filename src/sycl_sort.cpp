@@ -9,7 +9,7 @@
 // All code in this file (except for the last function) is boilerplate and
 // was provided by Thomas Applencourt.
 
-namespace sycl = cl::sycl;
+// namespace sycl = cl::sycl;
 
 struct syclDeviceInfo {
   sycl::context sycl_context;
