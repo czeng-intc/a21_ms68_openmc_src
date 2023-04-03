@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.22 FATAL_ERROR)
 project(openmc C CXX)
 
 # Set version numbers
@@ -36,11 +36,12 @@ option(coverage "Compile with coverage analysis flags"           OFF)
 option(dagmc    "Enable support for DAGMC (CAD) geometry"        OFF)
 option(new_w    "Use Ben Forget's Rational Fraction Approximation of Faddeeva W(z)" ON)
 option(device_history "Enable history-based transport on device" OFF)
+
 option(device_printf  "Enable printf statements on device"       ON)
 option(disable_xs_cache "Disable Micro XS cache"       ON)
 option(cuda_thrust_sort "Enable on-device sorting via CUDA Thrust (NVIDIA devices only)"       OFF)
-option(sycl_sort "Enable on-device sorting via SYCL OneAPI DPL (Intel devices only)"       OFF)
 option(queueless "Run using queueless event-based model (default is separate event queues)"       OFF)
+option(sycl_sort "Enable on-device sorting via SYCL OneAPI DPL (Intel devices only)"       OFF)
 
 #===============================================================================
 # MPI for distributed-memory parallelism
@@ -472,12 +473,11 @@ target_compile_options(openmc PRIVATE ${cxxflags})
 target_include_directories(openmc PRIVATE ${CMAKE_BINARY_DIR}/include)
 target_link_libraries(openmc libopenmc)
 
-# Ensure C++14 standard is used. Starting with CMake 3.8, another way this could
-# be done is using the cxx_std_14 compiler feature.
+# Ensure C++17 standard is used (required for Intel OneDPL on-device sorting)
 set_target_properties(
   #openmc libopenmc faddeeva
     openmc libopenmc
-    PROPERTIES CXX_STANDARD 14 CXX_EXTENSIONS OFF)
+    PROPERTIES CXX_STANDARD 17 CXX_EXTENSIONS OFF)
 
 #===============================================================================
 # Python package
