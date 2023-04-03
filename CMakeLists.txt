@@ -137,8 +137,8 @@ if(coverage)
   list(APPEND ldflags --coverage)
 endif()
 if(sycl_sort)
-  list(APPEND cxxflags -fsycl -D_GLIBCXX_USE_TBB_PAR_BACKEND=0)
-  list(APPEND ldflags -fsycl -D_GLIBCXX_USE_TBB_PAR_BACKEND=0)
+  list(APPEND cxxflags -fsycl -D_PSTL_PAR_BACKEND_SERIAL=1 -DPSTL_USE_PARALLEL_POLICIES=0 -D_GLIBCXX_USE_TBB_PAR_BACKEND=0)
+  list(APPEND ldflags -fsycl -D_PSTL_PAR_BACKEND_SERIAL=1 -DPSTL_USE_PARALLEL_POLICIES=0 -D_GLIBCXX_USE_TBB_PAR_BACKEND=0)
 endif()
 
 # Show flags being used
